@@ -1,0 +1,7 @@
+path vetiable jpa query da integer qiymat keganda iwlataman
+
+requestparamda boshqa tipdagi malumot kwlganda
+
+
+
+inectionni ukol  qilish yani been bolgan clasni autowiret qilib suqib qoyadi

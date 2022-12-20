@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+          crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+
+</head>
+<body>
+<div class="container-fluid m-4">
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <form th:action="@{/book/add}"  method="post" th:object="${book}">
+                <div class="text-center h4">
+                    <label class="form-control" style="background: #16a811">Book</label>
+                </div>
+                <div class="border-secondary" style="background: #ad920f">
+                    <div class="form-group row m-2">
+                        <div class="col-sm-3">
+                            <label class="btn btn-primary form-control">Name</label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input class="form-control"type="text" name="name" th:field="*{name}" placeholder="name" required
+                                   minlength="2">
+                        </div>
+                    </div>
+                    <div class="form-group row m-2">
+                        <div class="col-sm-4">
+                            <label class="btn btn-primary form-control">Genre</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <label for="exampleInputPassword1" class="form-label"></label>
+                            <input name="genre" th:field="*{genre}" type="text" class="form-control"
+                                   id="exampleInputPassword1">
+                        </div>
+                    </div>
+                    <div class="form-group row m-2">
+
+                        <div class="btn input-group-text">
+                            <button class="btn btn-primary" type="submit" style="background: white;color: black">save</button>
+                            <button class="btn border-secondary" type="reset" style="background: gray;">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+    </div>
+        <div class="col-md-8">
+            <table class="table table-bordered" style="max-width: 900px">
+
+                <thead class="table-dark">
+                <tr class="text-center">
+                    <th >Name</th>
+                    <th> Genre</th>
+                </tr>
+                </thead>
+                <tr th:each="cil:${books}">
+                    <td class="h6" style="color: darkblue" th:text="${cil.getName()}"></td>
+                    <td class="h6" style="color: darkblue" th:text="${cil.getGenre()}"></td>
+                    <td class="text-center">
+                        <a class="h2 btn btn-primary" style="background: white;color: black" th:href="@{'/book/edite/'+${cil.getId()}}">Edite</a>
+                        <a class="h2 btn btn-primary" style="background: white;color: black" th:href="@{'/book/delete/'+${cil.getId()}}">Delete</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
